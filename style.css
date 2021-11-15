@@ -108,7 +108,7 @@ body {
   min-height: 100vh;
   position: relative;
   font-family: "Open Sans", sans-serif!important;
-  background:#042536!important;
+  background: radial-gradient(circle, rgba(13,61,84,1) 0%, rgba(4,37,54,1) 100%)!important;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -141,6 +141,22 @@ header {
 @media screen and (max-width:768px){
     header .row{
         flex-direction: column;
+    }
+    img{
+      max-width:150px;
+      padding:40px 0px;
+    }
+    #kinoform{
+      width:100%;
+    }
+    .row{
+      width:100%;
+    }
+    input{
+      width:100%;
+    }
+    h3{
+      text-align:center;
     }
 }
 
@@ -177,4 +193,35 @@ header {
     border:none;
     font-size:1.5rem;
     padding:.5rem 3.5rem;
+}
+
+.form1 input,.form2 input{
+  border-bottom:1px solid #fff;
+}
+
+#fl{
+  font-size:2rem;
+  gap:10px;
+  border-bottom:1px solid #fff;
+}
+
+#number{
+  width:75%;
+}
+
+.euro{
+  width:25%;
+  display:flex;
+  justify-content: flex-end;
+}
+
+input{
+  background:transparent;
+  border:none;
+  color:#fff;
+  font-size:2rem!important;
+}
+
+input:focus{
+  outline:none;
 }
