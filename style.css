@@ -1,0 +1,180 @@
+html,
+body,
+div,
+span,
+applet,
+object,
+iframe,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+p,
+blockquote,
+pre,
+a,
+abbr,
+acronym,
+address,
+big,
+cite,
+code,
+del,
+dfn,
+em,
+img,
+ins,
+kbd,
+q,
+s,
+samp,
+small,
+strike,
+strong,
+sub,
+sup,
+tt,
+var,
+b,
+u,
+i,
+center,
+dl,
+dt,
+dd,
+ol,
+ul,
+li,
+fieldset,
+form,
+label,
+legend,
+table,
+caption,
+tbody,
+tfoot,
+thead,
+tr,
+th,
+td,
+article,
+aside,
+canvas,
+details,
+embed,
+figure,
+figcaption,
+footer,
+header,
+hgroup,
+menu,
+nav,
+output,
+ruby,
+section,
+summary,
+time,
+mark,
+audio,
+video {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  font-size: 100%;
+  font: inherit;
+  vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article,
+aside,
+details,
+figcaption,
+figure,
+footer,
+header,
+hgroup,
+menu,
+nav,
+section {
+  display: block;
+}
+body {
+  line-height: 1;
+  display: flex;
+  height: 100%;
+  flex-direction: column;
+  min-height: 100vh;
+  position: relative;
+  font-family: "Open Sans", sans-serif!important;
+  background:#042536!important;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+/* Firefox */
+input[type=number] {
+  -moz-appearance: textfield;
+}
+
+img {
+  width: 100%;
+}
+
+header {
+  background: #041b29;
+  min-height: 150px;
+  color: #b8feff;
+  height: 100%;
+  display: flex !important;
+  justify-content: end;
+  flex-direction: column;
+  padding: 40px 0px;
+}
+
+@media screen and (max-width:768px){
+    header .row{
+        flex-direction: column;
+    }
+}
+
+#time-now{
+    font-size: 3rem;
+    font-weight: bold;
+}
+
+#date,#time,#draw{
+    font-size:1.5rem;
+    font-weight: bold;
+}
+
+#kinoform{
+    display:flex;
+    flex-direction: column;
+    color:#fff;
+    gap:50px;
+}
+
+.form1,.form2,.form3{
+    display:flex;
+    flex-direction: column;
+}
+
+#page{
+    color:#fff;
+}
+
+#kinosubmit{
+    background: #efb31e;
+    color:#fff;
+    border-radius:20px;
+    border:none;
+    font-size:1.5rem;
+    padding:.5rem 3.5rem;
+}
