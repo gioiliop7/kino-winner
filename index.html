@@ -1,14 +1,38 @@
 <!DOCTYPE html>
 <html>
   <head>
-    <title>Page Title</title>
     <link href="./style.css" rel="stylesheet" />
 
     <title>Kino Winner</title>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="author" content="Giorgos Iliopoulos" />
-    <meta name="description" content="SupeleagueGreeceApi Docs" />
+    <meta name="description" content="Find if you win in kino" />
+    <link rel="icon" type="image/png" href="./images/KINNOWINNER.png" />
+
+    <title>Kino Winner</title>
+    <meta name="title" content="Kino Winner" />
+    <meta
+      name="description"
+      content="Find if you win in kino"
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://kinowinner.netlify.app/" />
+    <meta property="og:title" content="Kino Winner" />
+    <meta
+      property="og:description"
+      content="Find if you win in kino"
+    />
+    <meta property="og:image" content="./images/share.png" />
+
+    <meta property="twitter:card" content="summary_large_image" />
+    <meta property="twitter:url" content="https://kinowinner.netlify.app/" />
+    <meta property="twitter:title" content="Kino Winner" />
+    <meta
+      property="twitter:description"
+      content="Find if you win in kino"
+    />
+    <meta property="twitter:image" content="./images/share.png" />
 
     <script
       src="https://code.jquery.com/jquery-3.6.0.js"
@@ -40,7 +64,7 @@
           <div class="col text-center" id="time">Ώρα Κλήρωσης</div>
           <div class="col text-center" id="draw">Αριθμός Κλήρωσης</div>
           <div class="col text-center" id="kino-logo">
-            <img src="./images/kino_logo.svg" />
+            <img src="./images/KINNOWINNER.png" />
           </div>
           <div class="col text-center" id="date"></div>
           <div class="col text-center" id="time-now"></div>
@@ -55,36 +79,52 @@
           </h2>
           <form id="kinoform">
             <div class="form1">
-              <label for="drawid">Αριθμός κλήρωσης <br>*Αν δεν συμπληρωθεί,ελέγχεται η τελευταία κλήρωση</label>
-              <input type="number" id="drawid" name="drawid">
+              <label for="drawid"
+                >Αριθμός κλήρωσης <br />*Αν δεν συμπληρωθεί,ελέγχεται η
+                τελευταία κλήρωση</label
+              >
+              <input type="number" id="drawid" name="drawid" />
             </div>
             <div class="form2">
-              <label for="numbers">Δώσε τους αριθμούς που έπαιξες. Χρησημοποίησε , για διαχωρισμό *</label>
-              <input type="text" id="numbers" name="numbers">
+              <label for="numbers"
+                >Δώσε τους αριθμούς που έπαιξες. Χρησημοποίησε , για διαχωρισμό
+                *</label
+              >
+              <input type="text" id="numbers" name="numbers" />
             </div>
             <div class="form3">
               <label for="money">Δώσε το ποσό που έπαιξες *</label>
               <div id="fl" class="d-flex">
-                <input type="number" id="money" name="money">
+                <input type="number" id="money" name="money" />
                 <div class="euro">€</div>
               </div>
-              
             </div>
           </form>
         </div>
         <div class="mt-5">
-          <input type="radio" id="yes" name="kinobonus" value="yes"
-                 checked>
+          <input type="radio" id="yes" name="kinobonus" value="yes" checked />
           <label for="yes">Kino Bonus - Ναι</label>
         </div>
         <div class="mb-5">
-          <input type="radio" id="no" name="kinobonus" value="no">
+          <input type="radio" id="no" name="kinobonus" value="no" />
           <label for="no">Kino Bonus - Οχι</label>
         </div>
         <button id="kinosubmit">Υποβολή</button>
         <h3 class="mt-5 pb-3">Ποσό κέρδους: <span class="amount">-</span></h3>
+        <div class="row numbers-row pb-5 justify-content-center"></div>
       </div>
     </div>
+    <footer>
+      <div class="container">
+        <div class="row justify-content-center">
+          <img src="./images/kino_logo.svg" />
+          <img src="./images/1200px-OPAP_logo.svg.png" />
+        </div>
+        <h2 class="mt-5 text-white text-center">
+          Development by Giorgos Iliopoulos
+        </h2>
+      </div>
+    </footer>
     <script src="./index.js"></script>
   </body>
 </html>

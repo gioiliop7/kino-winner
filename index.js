@@ -68,6 +68,7 @@ $("#kinosubmit").click(function () {
 
   if (!$("#money").val() || !$("#numbers").val()) {
     alert("Συμπλήρωσε τα πεδία");
+    return;
   }
 
   let numbers_len = numbers_played.length;
@@ -75,8 +76,6 @@ $("#kinosubmit").click(function () {
   numbers_played = numbers_played.filter(function (number) {
     return number > 0 && number < 81;
   });
-
-  console.log(numbers_played);
 
   let fetch_url;
   let drawidinput = document.getElementById("drawid");
@@ -115,7 +114,7 @@ $("#kinosubmit").click(function () {
 
       let winningNumbers = data.winningNumbers;
 
-      //Remove dublicates from array if exist
+      //Remove duplicates from array if exist
       numbers_played = numbers_played.filter(onlyUnique);
       let successes = [];
       let draw;
@@ -128,6 +127,17 @@ $("#kinosubmit").click(function () {
       let total_money;
       draw = winningNumbers.list;
 
+      let numbers_row = document.querySelector(".numbers-row");
+      $(".winning-title").remove();
+      $(numbers_row).before(
+        '<h2 class="winning-title text-center mt-5 mb-5 text-white"> Επιτυχείς αριθμοί </h2>'
+      );
+        $(numbers_row).empty();
+        draw.forEach((element) => {
+          const html_numbers = `<div class="col-md-2 winners">${element}</div>`;
+          $(numbers_row).append(html_numbers);
+        });
+
       numbers_played.forEach((element) => {
         draw.forEach((number) => {
           if (element == number) {
@@ -135,6 +145,22 @@ $("#kinosubmit").click(function () {
           }
         });
       });
+
+      let winning_numbers = document.querySelectorAll('.winners');
+      winning_numbers.forEach(element => {
+          let value = element.innerText;
+          if (value == kino_bonus){
+            element.style.backgroundColor = 'red';
+            element.style.color = 'white';
+          }
+          value = parseInt(value);
+          if(successes.includes(value)){
+            element.style.backgroundColor = 'green';
+            element.style.color = 'white';
+          }
+      });
+
+
       let success_count = successes.length;
       if (numbers_len > 12 || numbers_len < 1) {
         console.log("Δεν υπολόγισα κάτι");

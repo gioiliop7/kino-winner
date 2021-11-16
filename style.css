@@ -125,6 +125,7 @@ input[type=number] {
 
 img {
   width: 100%;
+  max-width: 170px;
 }
 
 header {
@@ -193,6 +194,13 @@ header {
     border:none;
     font-size:1.5rem;
     padding:.5rem 3.5rem;
+    transition:all ease-in 0.2s;
+}
+
+#kinosubmit:hover{
+  background:#041b29;
+  color:#efb31e;
+  border:1px solid #efb31e;
 }
 
 .form1 input,.form2 input{
@@ -215,6 +223,19 @@ header {
   justify-content: flex-end;
 }
 
+.numbers-row{
+  gap:15px;
+}
+
+.winners{
+  color:#041b29;
+  background:#efb31e;
+  text-align:center;
+  font-weight: bold;
+  font-size:2rem;
+  border-radius:10px;
+}
+
 input{
   background:transparent;
   border:none;
@@ -224,4 +245,13 @@ input{
 
 input:focus{
   outline:none;
+}
+
+footer{
+  background:#041b29;
+  padding:2rem 0rem;
+}
+
+footer .row{
+  gap:20px;
 }
