@@ -60,28 +60,42 @@ $("#kinosubmit").click(function () {
     numbers_played.push(element);
   });
 
-  if (!$('#money').val() || !$('#numbers').val()){
-    alert('Συμπλήρωσε τα πεδία');
+  //Remove NaN values
+
+  numbers_played = numbers_played.filter(function (value) {
+    return !Number.isNaN(value);
+  });
+
+  if (!$("#money").val() || !$("#numbers").val()) {
+    alert("Συμπλήρωσε τα πεδία");
   }
 
+  let numbers_len = numbers_played.length;
+
+  numbers_played = numbers_played.filter(function (number) {
+    return number > 0 && number < 81;
+  });
+
+  console.log(numbers_played);
+
   let fetch_url;
-  let drawidinput = document.getElementById('drawid');
+  let drawidinput = document.getElementById("drawid");
   drawidinput = drawidinput.value;
 
-  if($("#drawid").val()){
-    fetch_url = `https://api.opap.gr/draws/v3.0/1100/${drawidinput}`
-  }else{
-    fetch_url = 'https://api.opap.gr/draws/v3.0/1100/last-result-and-active';
+  if ($("#drawid").val()) {
+    fetch_url = `https://api.opap.gr/draws/v3.0/1100/${drawidinput}`;
+  } else {
+    fetch_url = "https://api.opap.gr/draws/v3.0/1100/last-result-and-active";
   }
 
   fetch(fetch_url)
     .then((response) => response.json())
     .then((data) => {
-      if (fetch_url.indexOf("last-result-and-active") > -1){
+      if (fetch_url.indexOf("last-result-and-active") > -1) {
         data = data.last;
       }
       let drawid = data.drawId;
-      let drawtext = document.getElementById('draw');
+      let drawtext = document.getElementById("draw");
       drawtext.innerText = drawid;
       let drawtime = data.drawTime;
       var date = new Date(drawtime);
@@ -96,21 +110,19 @@ $("#kinosubmit").click(function () {
         ":" +
         date.getMinutes();
 
-        let timetext = document.getElementById('time');
-        timetext.innerText = drawtime;
+      let timetext = document.getElementById("time");
+      timetext.innerText = drawtime;
 
       let winningNumbers = data.winningNumbers;
 
       //Remove dublicates from array if exist
       numbers_played = numbers_played.filter(onlyUnique);
-
-      let numbers_len = numbers_played.length;
       let successes = [];
       let draw;
       let odd;
       let odd_bonus;
       let kino_bonus = winningNumbers.bonus[0];
-      let kino_bonus_checkbox = $('input[name=kinobonus]:checked').val();
+      let kino_bonus_checkbox = $("input[name=kinobonus]:checked").val();
       let money = document.getElementById("money");
       money = money.value;
       let total_money;
@@ -552,23 +564,26 @@ $("#kinosubmit").click(function () {
 
         total_money = odd * money;
 
-        if (kino_bonus_checkbox == 'yes') {
+        if (kino_bonus_checkbox == "yes") {
           if (numbers_played.includes(kino_bonus)) {
             total_money = odd_bonus * money;
           }
         }
-        let amount = document.querySelector('.amount');
-        if (total_money > 0){
-          total_money = new Intl.NumberFormat('el-GR', { style: 'currency', currency: 'EUR' }).format(total_money);
+        let amount = document.querySelector(".amount");
+        if (total_money > 0) {
+          total_money = new Intl.NumberFormat("el-GR", {
+            style: "currency",
+            currency: "EUR",
+          }).format(total_money);
           amount.innerText = total_money;
-        }else{
-          amount.innerText = 'Δεν υπάρχει κέρδος';
+        } else {
+          amount.innerText = "Δεν υπάρχει κέρδος";
         }
       }
     })
     .catch((error) => {
-      alert('Δεν μπόρεσε να βρεθεί η κλήρωση, παρακαλώ ξαναπροσπάθησε');
+      alert("Δεν μπόρεσε να βρεθεί η κλήρωση, παρακαλώ ξαναπροσπάθησε");
       console.log(error);
     });
-    $('#numbers').val('');
+  $("#numbers").val("");
 });
