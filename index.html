@@ -83,7 +83,7 @@
                 >Αριθμός κλήρωσης <br />*Αν δεν συμπληρωθεί,ελέγχεται η
                 τελευταία κλήρωση</label
               >
-              <input type="number" id="drawid" name="drawid" />
+              <input type="number" onkeyup="this.value=this.value.replace(/[^0-9]/g,'');" id="drawid" name="drawid" />
             </div>
             <div class="form2">
               <label for="numbers"

@@ -95,22 +95,26 @@ $("#kinosubmit").click(function () {
       }
       let drawid = data.drawId;
       let drawtext = document.getElementById("draw");
-      drawtext.innerText = drawid;
+      drawid
+        ? (drawtext.innerText = drawid)
+        : (drawtext.innerText = "Δεν βρέθηκε κλήρωση");
       let drawtime = data.drawTime;
-      var date = new Date(drawtime);
-      drawtime =
-        date.getDate() +
-        "/" +
-        (date.getMonth() + 1) +
-        "/" +
-        date.getFullYear() +
-        " " +
-        date.getHours() +
-        ":" +
-        date.getMinutes();
+      if (drawtime) {
+        var date = new Date(drawtime);
+        drawtime =
+          date.getDate() +
+          "/" +
+          (date.getMonth() + 1) +
+          "/" +
+          date.getFullYear() +
+          " " +
+          date.getHours() +
+          ":" +
+          date.getMinutes();
 
-      let timetext = document.getElementById("time");
-      timetext.innerText = drawtime;
+        let timetext = document.getElementById("time");
+        timetext.innerText = drawtime;
+      }
 
       let winningNumbers = data.winningNumbers;
 
@@ -132,11 +136,11 @@ $("#kinosubmit").click(function () {
       $(numbers_row).before(
         '<h2 class="winning-title text-center mt-5 mb-5 text-white"> Επιτυχείς αριθμοί </h2>'
       );
-        $(numbers_row).empty();
-        draw.forEach((element) => {
-          const html_numbers = `<div class="col-md-2 winners">${element}</div>`;
-          $(numbers_row).append(html_numbers);
-        });
+      $(numbers_row).empty();
+      draw.forEach((element) => {
+        const html_numbers = `<div class="col-md-2 winners">${element}</div>`;
+        $(numbers_row).append(html_numbers);
+      });
 
       numbers_played.forEach((element) => {
         draw.forEach((number) => {
@@ -146,20 +150,19 @@ $("#kinosubmit").click(function () {
         });
       });
 
-      let winning_numbers = document.querySelectorAll('.winners');
-      winning_numbers.forEach(element => {
-          let value = element.innerText;
-          if (value == kino_bonus){
-            element.style.backgroundColor = 'red';
-            element.style.color = 'white';
-          }
-          value = parseInt(value);
-          if(successes.includes(value)){
-            element.style.backgroundColor = 'green';
-            element.style.color = 'white';
-          }
+      let winning_numbers = document.querySelectorAll(".winners");
+      winning_numbers.forEach((element) => {
+        let value = element.innerText;
+        if (value == kino_bonus) {
+          element.style.backgroundColor = "red";
+          element.style.color = "white";
+        }
+        value = parseInt(value);
+        if (successes.includes(value)) {
+          element.style.backgroundColor = "green";
+          element.style.color = "white";
+        }
       });
-
 
       let success_count = successes.length;
       if (numbers_len > 12 || numbers_len < 1) {
