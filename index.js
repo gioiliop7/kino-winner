@@ -67,7 +67,12 @@ $("#kinosubmit").click(function () {
   });
 
   if (!$("#money").val() || !$("#numbers").val()) {
-    alert("Συμπλήρωσε τα πεδία");
+    Swal.fire({
+      title: 'Παρουσιάστηκε σφάλμα!',
+      text: 'Συμπλήρωσε όλα τα πεδία',
+      icon: 'warning',
+      confirmButtonText: 'ΟΚ'
+    })
     return;
   }
 
@@ -90,6 +95,22 @@ $("#kinosubmit").click(function () {
   fetch(fetch_url)
     .then((response) => response.json())
     .then((data) => {
+      const Toast = Swal.mixin({
+        toast: true,
+        position: 'top-end',
+        showConfirmButton: false,
+        timer: 4500,
+        timerProgressBar: true,
+        didOpen: (toast) => {
+          toast.addEventListener('mouseenter', Swal.stopTimer)
+          toast.addEventListener('mouseleave', Swal.resumeTimer)
+        }
+      })
+      
+      Toast.fire({
+        icon: 'success',
+        title: 'Επιτυχής εύρεση κλήρωσης'
+      })
       if (fetch_url.indexOf("last-result-and-active") > -1) {
         data = data.last;
       }
@@ -611,7 +632,12 @@ $("#kinosubmit").click(function () {
       }
     })
     .catch((error) => {
-      alert("Δεν μπόρεσε να βρεθεί η κλήρωση, παρακαλώ ξαναπροσπάθησε");
+      Swal.fire({
+        title: 'Παρουσιάστηκε σφάλμα!',
+        text: 'Δεν βρέθηκε η κλήρωση. Παρακαλώ προσπαθήστε ξανά',
+        icon: 'error',
+        confirmButtonText: 'ΟΚ'
+      })
       console.log(error);
     });
   $("#numbers").val("");
