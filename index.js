@@ -82,6 +82,16 @@ $("#kinosubmit").click(function () {
     return number > 0 && number < 81;
   });
 
+  if (numbers_played.length == 0){
+    Swal.fire({
+      title: 'Παρουσιάστηκε σφάλμα!',
+      text: 'Δεν υπάρχει έστω ένας αριθμός στο εύρος 0-80 για να πραγματοποιηθεί η αναζήτηση της κλήρωσης.',
+      icon: 'warning',
+      confirmButtonText: 'ΟΚ'
+    });
+      return;
+  }
+
   let fetch_url;
   let drawidinput = document.getElementById("drawid");
   drawidinput = drawidinput.value;
