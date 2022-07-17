@@ -108,7 +108,22 @@ body {
   min-height: 100vh;
   position: relative;
   font-family: "Open Sans", sans-serif!important;
+}
+
+body{
+  background: url('./images/bg_1920x1080.jpg');
+  background-size: cover;
+  background-repeat: no-repeat;
+}
+
+#page .container{
   background: radial-gradient(circle, rgba(13,61,84,1) 0%, rgba(4,37,54,1) 100%)!important;
+  border: 0.15vw solid rgb(255, 255, 255);
+  border-radius: 1.5vw;
+}
+
+#page{
+  padding:2rem 0;
 }
 
 /* Chrome, Safari, Edge, Opera */
@@ -129,9 +144,8 @@ img {
 }
 
 header {
-  background: #041b29;
   min-height: 150px;
-  color: #b8feff;
+  color: #042436;
   height: 100%;
   display: flex !important;
   justify-content: end;
@@ -164,6 +178,14 @@ header {
 #time-now{
     font-size: 3rem;
     font-weight: bold;
+    color: #FFFFFF;
+    border: solid 0.2vw #FFFFFF;
+    border-radius: 1vw;
+    background:#10223d;
+}
+
+#seconds{
+  color:#ffb502;
 }
 
 #date,#time,#draw{
@@ -248,8 +270,9 @@ input:focus{
 }
 
 footer{
-  background:#041b29;
   padding:2rem 0rem;
+  background: #FFC900;
+  color:#10223d!important;
 }
 
 footer .row{

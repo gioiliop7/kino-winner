@@ -11,7 +11,7 @@ function startTime() {
   let s = today.getSeconds();
   m = checkTime(m);
   s = checkTime(s);
-  document.getElementById("time-now").innerHTML = h + ":" + m + ":" + s;
+  document.getElementById("time-now").innerHTML = `<div>${h}:${m}<span id="seconds">:${s}</span></div>`;
   setTimeout(startTime, 1000);
 }
 
